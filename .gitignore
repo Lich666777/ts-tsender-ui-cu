@@ -45,3 +45,4 @@ node_modules/
 .fleek/*
 .env 
 .env.enc
+.env.local

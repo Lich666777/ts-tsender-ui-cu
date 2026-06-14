@@ -48,6 +48,11 @@ export default function AirdropForm({ isUnsafeMode, onModeChange }: AirdropFormP
                 functionName: "balanceOf",
                 args: [account.address],
             },
+            {
+                abi: erc20Abi,
+                address: tokenAddress as `0x${string}`,
+                functionName: "symbol",
+            },
         ],
     })
     const [hasEnoughTokens, setHasEnoughTokens] = useState(true)
@@ -233,6 +238,27 @@ export default function AirdropForm({ isUnsafeMode, onModeChange }: AirdropFormP
                             <span className="text-sm text-zinc-600">Token Name:</span>
                             <span className="font-mono text-zinc-900">
                                 {tokenData?.[1]?.result as string}
+                            </span>
+                        </div>
+                        <div className="flex justify-between items-center">
+                            <span className="text-sm text-zinc-600">Token Symbol:</span>
+                            <span className="font-mono text-zinc-900">
+                                {tokenData?.[3]?.result as string}
+                            </span>
+                        </div>
+                        <div className="flex justify-between items-center">
+                            <span className="text-sm text-zinc-600">Token Decimals:</span>
+                            <span className="font-mono text-zinc-900">
+                                {tokenData?.[0]?.result as number}
+                            </span>
+                        </div>
+                        <div className="flex justify-between items-center">
+                            <span className="text-sm text-zinc-600">Your Balance:</span>
+                            <span className="font-mono text-zinc-900">
+                                {formatTokenAmount(
+                                    tokenData?.[2]?.result ? BigInt(tokenData[2].result!.toString()) : BigInt(0),
+                                    tokenData?.[0]?.result as number
+                                )}
                             </span>
                         </div>
                         <div className="flex justify-between items-center">

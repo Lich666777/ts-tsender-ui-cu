@@ -368,7 +368,8 @@
                                     "name": null,
                                     "params": null
                                 },
-                                "position": 0
+                                "index": 0,
+                                    "position": 0
                             }
                         ],
                         "ordering": [
